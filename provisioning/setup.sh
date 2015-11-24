@@ -25,6 +25,8 @@ add-apt-repository "deb http://dl.hhvm.com/ubuntu $(lsb_release -sc) main"
 apt-get update
 apt-get install -y hhvm
 /usr/share/hhvm/install_fastcgi.sh
+/usr/bin/update-alternatives --install /usr/bin/php php /usr/bin/hhvm 60
+
 cp /vagrant/provisioning/config/coba.php /var/www/html/
 
 echo "Setup MySQL"
