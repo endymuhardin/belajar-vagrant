@@ -4,6 +4,7 @@ echo "Memulai provisioning"
 
 echo "Setup Software Sources"
 cp /vagrant/provisioning/config/sources.list /etc/apt/sources.list
+cp /vagrant/provisioning/config/environment /etc/environment
 
 apt-get update
 apt-get upgrade -y
@@ -42,11 +43,7 @@ curl -sS https://getcomposer.org/installer | php
 mv /home/vagrant/composer.phar /usr/local/bin/composer
 
 echo "Install Laravel"
-rm -rf aplikasisaya
-composer create-project laravel/laravel aplikasisaya
-
-echo "Konfigurasi VHost Nginx"
-cp /vagrant/provisioning/config/nginx-vhost /etc/nginx/sites-available/aplikasisaya
-ln -s /etc/nginx/sites-available/aplikasisaya /etc/nginx/sites-enabled/
+rm -rf aplikasi
+composer create-project laravel/laravel aplikasi
 
 echo "Selesai provisioning"
